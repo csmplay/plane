@@ -1,3 +1,9 @@
+<h1>CSM Plane</h1>
+
+This is an edited version of Plane used by CSM. It primarily includes required bug fixes, UI changes, and OIDC support.
+
+This repo is based on the work of [torbenraab](https://github.com/torbenraab/plane), whose fork brought OIDC support to the Plane Community Edition.
+
 <br /><br />
 
 <p align="center">

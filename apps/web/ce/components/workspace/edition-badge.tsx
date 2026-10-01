@@ -7,7 +7,6 @@
 import { useState } from "react";
 import { observer } from "mobx-react";
 // ui
-import { useTranslation } from "@plane/i18n";
 import { Tooltip } from "@plane/propel/tooltip";
 // hooks
 import { usePlatformOS } from "@/hooks/use-platform-os";
@@ -19,8 +18,6 @@ import { Button } from "@plane/propel/button";
 export const WorkspaceEditionBadge = observer(function WorkspaceEditionBadge() {
   // states
   const [isPaidPlanPurchaseModalOpen, setIsPaidPlanPurchaseModalOpen] = useState(false);
-  // translation
-  const { t } = useTranslation();
   // platform
   const { isMobile } = usePlatformOS();
 
@@ -36,9 +33,9 @@ export const WorkspaceEditionBadge = observer(function WorkspaceEditionBadge() {
           size="lg"
           onClick={() => setIsPaidPlanPurchaseModalOpen(true)}
           aria-haspopup="dialog"
-          aria-label={t("aria_labels.projects_sidebar.edition_badge")}
+          aria-label="CSM Plane"
         >
-          Community
+          CSM Plane
         </Button>
       </Tooltip>
     </>

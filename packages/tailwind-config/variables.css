@@ -544,7 +544,7 @@
       --txt-success-secondary: var(--green-700);
       --txt-warning-primary: var(--amber-900);
       --txt-warning-secondary: var(--amber-700);
-      --txt-danger-primary: var(--red-900);
+      --txt-danger-primary: oklch(0.7147 0.1784 26.99);
       --txt-danger-secondary: var(--red-700);
       /* Icon colors */
       --txt-icon-primary: var(--neutral-1200);
