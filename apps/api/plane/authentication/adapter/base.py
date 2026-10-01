@@ -128,6 +128,7 @@ class Adapter:
             "google": "ENABLE_GOOGLE_SYNC",
             "github": "ENABLE_GITHUB_SYNC",
             "gitlab": "ENABLE_GITLAB_SYNC",
+            "oidc": "ENABLE_OIDC_SYNC",
             "gitea": "ENABLE_GITEA_SYNC",
         }
         config_key = provider_config_map.get(self.provider)

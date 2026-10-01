@@ -16,12 +16,14 @@ import giteaLogo from "@/app/assets/logos/gitea-logo.svg?url";
 import githubLightModeImage from "@/app/assets/logos/github-black.png?url";
 import githubDarkModeImage from "@/app/assets/logos/github-white.png?url";
 import gitlabLogo from "@/app/assets/logos/gitlab-logo.svg?url";
+import OIDCLogo from "@/app/assets/logos/oidc-logo.svg?url";
 import googleLogo from "@/app/assets/logos/google-logo.svg?url";
 // components
 import { EmailCodesConfiguration } from "@/components/authentication/email-config-switch";
 import { GiteaConfiguration } from "@/components/authentication/gitea-config";
 import { GithubConfiguration } from "@/components/authentication/github-config";
 import { GitlabConfiguration } from "@/components/authentication/gitlab-config";
+import { OpenIDConnectConfiguration } from "@/components/authentication/oidc-config";
 import { GoogleConfiguration } from "@/components/authentication/google-config";
 import { PasswordLoginConfiguration } from "@/components/authentication/password-config-switch";
 
@@ -80,6 +82,14 @@ export const getCoreAuthenticationModesMap: (
     icon: <img src={gitlabLogo} height={20} width={20} alt="GitLab Logo" />,
     config: <GitlabConfiguration disabled={disabled} updateConfig={updateConfig} />,
     enabledConfigKey: "IS_GITLAB_ENABLED",
+  },
+  oidc: {
+    key: "oidc",
+    name: "OIDC",
+    description: "Allow members to log in or sign up to plane with their OIDC accounts.",
+    icon: <img src={OIDCLogo} height={20} width={20} alt="OIDC Logo" />,
+    config: <OpenIDConnectConfiguration disabled={disabled} updateConfig={updateConfig} />,
+    enabledConfigKey: "IS_OIDC_ENABLED",
   },
   gitea: {
     key: "gitea",

@@ -11,6 +11,7 @@ import { API_BASE_URL } from "@plane/constants";
 import type { TOAuthConfigs, TOAuthOption } from "@plane/types";
 // assets
 import giteaLogo from "@/app/assets/logos/gitea-logo.svg?url";
+import oidcLogo from "@/app/assets/logos/oidc-logo.svg?url";
 import githubLightLogo from "@/app/assets/logos/github-black.png?url";
 import githubDarkLogo from "@/app/assets/logos/github-dark.svg?url";
 import gitlabLogo from "@/app/assets/logos/gitlab-logo.svg?url";
@@ -33,7 +34,8 @@ export const useCoreOAuthConfig = (oauthActionText: string): TOAuthConfigs => {
       (config?.is_google_enabled ||
         config?.is_github_enabled ||
         config?.is_gitlab_enabled ||
-        config?.is_gitea_enabled)) ||
+        config?.is_oidc_enabled)) ||
+    config?.is_gitea_enabled ||
     false;
   const oAuthOptions: TOAuthOption[] = [
     {
@@ -69,6 +71,15 @@ export const useCoreOAuthConfig = (oauthActionText: string): TOAuthConfigs => {
         window.location.assign(`${API_BASE_URL}/auth/gitlab/${next_path ? `?next_path=${next_path}` : ``}`);
       },
       enabled: config?.is_gitlab_enabled,
+    },
+    {
+      id: "oidc",
+      text: `${oauthActionText} with OIDC`,
+      icon: <img src={oidcLogo} height={18} width={18} alt="OIDC Logo" />,
+      onClick: () => {
+        window.location.assign(`${API_BASE_URL}/auth/oidc/${next_path ? `?next_path=${next_path}` : ``}`);
+      },
+      enabled: config?.is_oidc_enabled,
     },
     {
       id: "gitea",

@@ -9,6 +9,7 @@ from .app.check import EmailCheckEndpoint
 from .app.email import SignInAuthEndpoint, SignUpAuthEndpoint
 from .app.github import GitHubCallbackEndpoint, GitHubOauthInitiateEndpoint
 from .app.gitlab import GitLabCallbackEndpoint, GitLabOauthInitiateEndpoint
+from .app.oidc import OpenIDConnectCallbackEndpoint, OpenIDConnectInitiateEndpoint
 from .app.gitea import GiteaCallbackEndpoint, GiteaOauthInitiateEndpoint
 from .app.google import GoogleCallbackEndpoint, GoogleOauthInitiateEndpoint
 from .app.magic import MagicGenerateEndpoint, MagicSignInEndpoint, MagicSignUpEndpoint
@@ -21,6 +22,8 @@ from .space.email import SignInAuthSpaceEndpoint, SignUpAuthSpaceEndpoint
 from .space.github import GitHubCallbackSpaceEndpoint, GitHubOauthInitiateSpaceEndpoint
 
 from .space.gitlab import GitLabCallbackSpaceEndpoint, GitLabOauthInitiateSpaceEndpoint
+
+from .space.oidc import OpenIDConnectCallbackSpaceEndpoint, OpenIDConnectInitiateSpaceEndpoint
 
 from .space.gitea import GiteaCallbackSpaceEndpoint, GiteaOauthInitiateSpaceEndpoint
 

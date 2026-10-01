@@ -10,6 +10,7 @@ export type TCoreInstanceAuthenticationModeKeys =
   | "google"
   | "github"
   | "gitlab"
+  | "oidc"
   | "gitea";
 
 export type TInstanceAuthenticationModeKeys = TCoreInstanceAuthenticationModeKeys;
@@ -31,6 +32,7 @@ export type TInstanceAuthenticationMethodKeys =
   | "IS_GOOGLE_ENABLED"
   | "IS_GITHUB_ENABLED"
   | "IS_GITLAB_ENABLED"
+  | "IS_OIDC_ENABLED"
   | "IS_GITEA_ENABLED";
 
 export type TInstanceGoogleAuthenticationConfigurationKeys =
@@ -56,10 +58,16 @@ export type TInstanceGiteaAuthenticationConfigurationKeys =
   | "GITEA_CLIENT_SECRET"
   | "ENABLE_GITEA_SYNC";
 
+export type TInstanceOpenIDConnectAuthenticationConfigurationKeys =
+  | "OIDC_ISSUER_URL"
+  | "OIDC_CLIENT_ID"
+  | "OIDC_CLIENT_SECRET";
+
 export type TInstanceAuthenticationConfigurationKeys =
   | TInstanceGoogleAuthenticationConfigurationKeys
   | TInstanceGithubAuthenticationConfigurationKeys
   | TInstanceGitlabAuthenticationConfigurationKeys
+  | TInstanceOpenIDConnectAuthenticationConfigurationKeys
   | TInstanceGiteaAuthenticationConfigurationKeys;
 
 export type TInstanceAuthenticationKeys = TInstanceAuthenticationMethodKeys | TInstanceAuthenticationConfigurationKeys;
@@ -83,4 +91,4 @@ export type TOAuthConfigs = {
   oAuthOptions: TOAuthOption[];
 };
 
-export type TCoreLoginMediums = "email" | "magic-code" | "github" | "gitlab" | "google" | "gitea";
+export type TCoreLoginMediums = "email" | "magic-code" | "github" | "gitlab" | "oidc" | "google" | "gitea";

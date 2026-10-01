@@ -11,6 +11,7 @@ export const CORE_LOGIN_MEDIUM_LABELS: Record<TCoreLoginMediums, string> = {
   "magic-code": "Magic code",
   github: "GitHub",
   gitlab: "GitLab",
+  oidc: "OpenID Connect",
   google: "Google",
   gitea: "Gitea",
 };

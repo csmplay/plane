@@ -13,6 +13,7 @@ export const CORE_HEADER_SEGMENT_LABELS: Record<string, string> = {
   google: "Google",
   github: "GitHub",
   gitlab: "GitLab",
+  oidc: "OpenID Connect",
   gitea: "Gitea",
   workspace: "Workspace",
   create: "Create",

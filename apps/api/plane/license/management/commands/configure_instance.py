@@ -27,6 +27,9 @@ class Command(BaseCommand):
                 raise CommandError(f"{item} env variable is required.")
 
         for item in instance_config_variables:
+            if item.get("key") == "IS_OIDC_ENABLED":
+                # Set this from the required OIDC issuer and credentials below.
+                continue
             obj, created = InstanceConfiguration.objects.get_or_create(key=item.get("key"))
             if created:
                 obj.category = item.get("category")
@@ -39,6 +42,44 @@ class Command(BaseCommand):
                 self.stdout.write(self.style.SUCCESS(f"{obj.key} loaded with value from environment variable."))
             else:
                 self.stdout.write(self.style.WARNING(f"{obj.key} configuration already exists"))
+
+        if not InstanceConfiguration.objects.filter(key="IS_OIDC_ENABLED").exists():
+            OIDC_CLIENT_ID, OIDC_CLIENT_SECRET, OIDC_ISSUER_URL = get_configuration_value(
+                [
+                    {
+                        "key": "OIDC_CLIENT_ID",
+                        "default": os.environ.get("OIDC_CLIENT_ID", ""),
+                    },
+                    {
+                        "key": "OIDC_CLIENT_SECRET",
+                        "default": os.environ.get("OIDC_CLIENT_SECRET", ""),
+                    },
+                    {
+                        "key": "OIDC_ISSUER_URL",
+                        "default": os.environ.get("OIDC_ISSUER_URL", ""),
+                    },
+                ]
+            )
+            value = (
+                "1"
+                if all(
+                    (
+                        OIDC_CLIENT_ID,
+                        OIDC_CLIENT_SECRET,
+                        OIDC_ISSUER_URL,
+                    )
+                )
+                else "0"
+            )
+            InstanceConfiguration.objects.create(
+                key="IS_OIDC_ENABLED",
+                value=value,
+                category="AUTHENTICATION",
+                is_encrypted=False,
+            )
+            self.stdout.write(self.style.SUCCESS("IS_OIDC_ENABLED loaded with value from environment variable."))
+        else:
+            self.stdout.write(self.style.WARNING("IS_OIDC_ENABLED configuration already exists"))
 
         keys = ["IS_GOOGLE_ENABLED", "IS_GITHUB_ENABLED", "IS_GITLAB_ENABLED", "IS_GITEA_ENABLED"]
         if not InstanceConfiguration.objects.filter(key__in=keys).exists():
