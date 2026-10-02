@@ -4,7 +4,6 @@
  * See the LICENSE file for details.
  */
 
-import type { FC } from "react";
 // plane types
 import { useTranslation } from "@plane/i18n";
 import type { IUser } from "@plane/types";
@@ -28,18 +27,18 @@ export function UserGreetingsView(props: IUserGreetingsView) {
     hour: "numeric",
   }).format(currentTime);
 
-  const date = new Intl.DateTimeFormat("en-US", {
+  const date = new Intl.DateTimeFormat("ru-RU", {
     month: "short",
     day: "numeric",
   }).format(currentTime);
 
-  const weekDay = new Intl.DateTimeFormat("en-US", {
+  const weekDay = new Intl.DateTimeFormat("ru-RU", {
     weekday: "long",
   }).format(currentTime);
 
   const timeString = new Intl.DateTimeFormat("en-US", {
     timeZone: user?.user_timezone,
-    hour12: false, // Use 24-hour format
+    hourCycle: "h23",
     hour: "2-digit",
     minute: "2-digit",
   }).format(currentTime);
